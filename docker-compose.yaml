@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  bot:
+    env_file:
+      - .env
+    build:
+      context: .
+    ports:
+      - "5555:5555"
+    volumes:
+      - .:/app
+    command: ["python", "lunch_chooser_bot.py"]
+
+  db:
+    env_file:
+      - .env
+    image: postgres:15.4-alpine3.18
+    volumes:
+      - /private/var/lib/postgresql:/var/lib/postgresql
