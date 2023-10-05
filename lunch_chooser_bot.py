@@ -43,9 +43,14 @@ async def add_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
     )
 
 
+async def list_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    await update.message.reply_text(f'Заклади до вибору на сьогодні: {", ".join(PLACES)}')
+
+
 async def choose_command(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if len(PLACES) < 1:
         await update.message.reply_text("Не можу вибрати заклад, бо немає варіантів(")
+        return
     await update.message.reply_text(f'Сьогодні вибрано {random.choice(PLACES)["name"]}')
 
 
@@ -60,6 +65,7 @@ def main() -> None:
     application.add_handler(CommandHandler("help", help_command))
     application.add_handler(CommandHandler("add", add_command))
     application.add_handler(CommandHandler("choose", choose_command))
+    application.add_handler(CommandHandler("list", list_command))
 
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
