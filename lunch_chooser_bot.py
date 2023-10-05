@@ -71,6 +71,7 @@ def main() -> None:
 
     if os.getenv("DEPLOY"):
         application.run_webhook(
+            listen='0.0.0.0',
             port=os.getenv("PORT"),
             webhook_url=os.getenv("WEBHOOK_URL"),
         )
