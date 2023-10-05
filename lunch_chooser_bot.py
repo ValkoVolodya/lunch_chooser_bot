@@ -69,7 +69,13 @@ def main() -> None:
 
     application.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, echo))
 
-    application.run_polling(allowed_updates=Update.ALL_TYPES)
+    if os.getenv("DEPLOY"):
+        application.run_webhook(
+            port=os.getenv("PORT"),
+            webhook_url=os.getenv("WEBHOOK_URL"),
+        )
+    else:
+        application.run_polling(allowed_updates=Update.ALL_TYPES)
 
 
 if __name__ == "__main__":
