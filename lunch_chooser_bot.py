@@ -27,7 +27,8 @@ DEFAULT_PLACES = [
     'Very Well',
     'NUNU',
     'Пузата Хата',
-    'This is Pivbar',
+    'Казан Диван',
+    'Salateira',
 ]
 
 CHOOSE_BUTTON_TEXT = "Вибрати варіанти на сьогодні"
