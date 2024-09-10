@@ -115,7 +115,7 @@ def main() -> None:
     application.add_handler(CommandHandler("add", add_command))
     application.add_handler(CommandHandler("list", list_command))
     application.add_handler(CommandHandler("list2", list_command))
-    application.add_handler(CommandHandler("list3", list_command))
+    application.add_handler(CommandHandler("list25", list_command))
     application.add_handler(PollHandler(receive_quiz_answer))
 
     application.add_handler(
